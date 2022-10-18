@@ -1,0 +1,21 @@
+button{
+    cursor: pointer;
+    margin: 10px;
+    min-width: 50px;
+}
+
+.btn-start{
+    background-color: greenyellow;
+}
+
+.btn-pause{
+    background-color: orange;
+}
+
+.btn-end{
+    background-color: crimson;
+}
+.btn-disabled{
+    background-color: grey;
+    cursor: none;
+}

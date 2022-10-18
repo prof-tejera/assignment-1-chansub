@@ -1,27 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import "./Button.css";
 
-const startColor = "#90EE90";
-
-const BButton = styled.button`
-    //background-color: ${startColor};
-    cursor: pointer;
-`;
-
-const Button = ({ active, text='start', ...props }) => {
+const Button = ({ active, text, ...btnProps }) => {
   return (
-    <BButton
-      className={active ? ".button-active" : "button-regular"}
+    <button
+      className={active ? ".btn-active" : "btn-disabled"}
+      {...btnProps}
     >
       {text}
-    </BButton>
+    </button>
   );
 };
-
-Button.propTypes = {
-    color: PropTypes.string,
-  };
-  
 
 export default Button;
