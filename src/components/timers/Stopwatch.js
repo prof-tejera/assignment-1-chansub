@@ -3,7 +3,9 @@ import Panel from "../generic/Panel.js";
 import Button from "../generic/Button.js";
 import { doConvert } from "../../utils/helpers";
 
-//I took some inspiration from https://stackoverflow.com/questions/61923862/how-to-pause-a-setinterval-countdown-timer-in-react
+//I took some inspiration from https://dmitripavlutin.com/react-useeffect-explanation/ 
+//and https://stackoverflow.com/questions/61923862/how-to-pause-a-setinterval-countdown-timer-in-react
+
 
 const StopWatch = () => {
 

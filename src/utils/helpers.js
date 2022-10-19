@@ -6,8 +6,9 @@
 export const doConvert = (s) => {
     let minutes = Math.floor(s/60);
     let secs = s % 60;
-    let final = minutes.toString() + ':' + secs.toString().padStart(2,'0');
+    let final = minutes.toString().padStart(2,'0') + ':' + secs.toString().padStart(2,'0');
     return final;
 }
+//sample
+//export const add = (a, b) => a + b;
 
-export const add = (a, b) => a + b;

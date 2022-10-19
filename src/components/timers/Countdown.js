@@ -3,7 +3,6 @@ import Panel from "../generic/Panel.js";
 import Button from "../generic/Button.js";
 import { doConvert } from "../../utils/helpers";
 
-//I took some inspiration from https://stackoverflow.com/questions/61923862/how-to-pause-a-setinterval-countdown-timer-in-react
 
 const Countdown = () => {
 
@@ -18,8 +17,6 @@ const Countdown = () => {
             clearInterval(interval);
         }
     });
-
-    
 
     const performCount = () => {
         if(!pause){
@@ -44,9 +41,6 @@ const Countdown = () => {
         setSeconds(initialSeconds);
         console.log("Countdown reset called");
     }
-
-    
-
 
 
     return (
