@@ -1,69 +1,58 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import Panel from "../generic/Panel.js";
 import Button from "../generic/Button.js";
+import { doConvert } from "../../utils/helpers";
 
-const Stopwatch = () => {
+//I took some inspiration from https://stackoverflow.com/questions/61923862/how-to-pause-a-setinterval-countdown-timer-in-react
 
-    const [currentTime, setCurrentTime] = useState(0);
-    const [state, setState] = useState({intervalID:0, status:'start'});
-    let second = 0;
+const StopWatch = () => {
 
-    const handleStart = () => {
-        start();
-        console.log('Start button hit!');
-    }
+    const initialSeconds = 0;
+    const maxSeconds = 150;
 
-    const handlePause = () =>{
-        pause();
-        console.log('Pause button hit');
-    }
+    const [seconds, setSeconds] = useState(initialSeconds);
+    const [pause, setPause] = useState(true);
+    
+    useEffect(() => {
+        const interval = setInterval(performCount, 1000); 
+        return () => {
+            clearInterval(interval);
+        }
+    });
 
-    const handleEnd = () => {
-        end();
-        console.log('End button hit.');
-    }
-
-    const sayHi = () => {
-        //const date = new Date();
-        //let curr = date.toLocaleTimeString();
-        if(state.status !== 'paused'){
-            second += 1;
-            console.log('status:', state.status, 'current second:', second);
-            setCurrentTime(second);
+    const performCount = () => {
+        if(!pause){
+            if(seconds < maxSeconds){
+                setSeconds(seconds + 1);
+                console.log('running now...', seconds);
+            }
         }
     }
 
-    const start = function () {
-        const id = setInterval(sayHi, 1000); //1000 millisecond = 1 second
-        setState(ev => ({
-            status:'started',
-            intervalID: id,
-        }));
+    const handlePauseToggle = () => {
+        setPause(!pause);
+        console.log("Stopwatch",(pause)?'unpaused':'paused');
     }
-
-    const pause = function (){
-        setState(ev => ({
-            ...ev,
-            status:'paused',
-        }));
+    const handleEnd = () => {
+        setPause(true);
+        setSeconds(10);
+        console.log("Stopwatch end called");
     }
-
-    const end = () => {
-        clearInterval(state.intervalID);   
-        setState(ev => ({
-            status:'end',
-            intervalID: 0,
-        }));
+    const handleReset = () => {
+        setPause(true);
+        setSeconds(initialSeconds);
+        console.log("Stopwatch reset called");
     }
 
 
     return (
         <>
-        <Panel className={"output-"+state.intervalID}> Second(s): {currentTime}</Panel>
-        <Button className='btn-start' text="Start" onClick={handleStart} />
-        <Button className='btn-pause' text="Pause" onClick={handlePause} />
-        <Button className='btn-end' text='End' onClick={handleEnd}/></>
+        <Panel className={"output"}>{doConvert(seconds)}</Panel>
+        <Button className={(pause)?'btn-start':'btn-pause'} text={(pause)?'Start':'Pause'} onClick={handlePauseToggle} disabled={(seconds > 0) || (seconds < 10) ? false:true}/>
+        <Button className='btn-end' text='End' onClick={handleEnd} disabled={(seconds === 0)? true:false}/> 
+        <Button className='btn-reset' text='Reset' onClick={handleReset} />
+        </>        
     );
 };
 
-export default Stopwatch;
+export default StopWatch;

@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import Panel from "../generic/Panel.js";
 import Button from "../generic/Button.js";
+import { doConvert } from "../../utils/helpers";
 
 //I took some inspiration from https://stackoverflow.com/questions/61923862/how-to-pause-a-setinterval-countdown-timer-in-react
 
 const Countdown = () => {
 
-    const [seconds, setSeconds] = useState(180);
-    const [pause, setPause] = useState(true);
+    const initialSeconds = 150;
 
+    const [seconds, setSeconds] = useState(initialSeconds);
+    const [pause, setPause] = useState(true);
+    
     useEffect(() => {
         const interval = setInterval(performCount, 1000); //1000 millisecond = 1 second
         return () => {
@@ -16,11 +19,13 @@ const Countdown = () => {
         }
     });
 
+    
+
     const performCount = () => {
         if(!pause){
             if(seconds > 0){
                 setSeconds(seconds - 1);
-                console.log('running now...', seconds);
+                //console.log('running now...', doConvert(seconds));
             }
         }
     }
@@ -36,14 +41,17 @@ const Countdown = () => {
     }
     const handleReset = () => {
         setPause(true);
-        setSeconds(180);
+        setSeconds(initialSeconds);
         console.log("Countdown reset called");
     }
+
+    
+
 
 
     return (
         <>
-        <Panel className={"output"}>Seconds: {seconds}</Panel>
+        <Panel className={"output"} data-seconds={seconds}>{doConvert(seconds)}</Panel>
         <Button className={(pause)?'btn-start':'btn-pause'} text={(pause)?'Start':'Pause'} onClick={handlePauseToggle} disabled={(seconds === 0)? true:false}/>
         <Button className='btn-end' text='End' onClick={handleEnd} disabled={(seconds === 0)? true:false}/> 
         <Button className='btn-reset' text='Reset' onClick={handleReset} />

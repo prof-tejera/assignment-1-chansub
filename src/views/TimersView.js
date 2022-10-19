@@ -28,7 +28,7 @@ const TimersView = () => {
   const timers = [
     { title: "Stopwatch", C: <Stopwatch />},
     { title: "Countdown", C: <Countdown />}, 
-    { title: "XY", C: <XY />},
+       { title: "XY", C: <XY />},
     { title: "Tabata", C: <Tabata />},
   ];
 
