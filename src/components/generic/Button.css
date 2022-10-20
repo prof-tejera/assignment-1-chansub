@@ -2,10 +2,12 @@ button{
     cursor: pointer;
     margin: 10px;
     min-width: 50px;
+    background-color:rgba(249, 248, 241, 0.926);
 }
-
+/* 
 .btn-start{
     background-color: greenyellow;
+    
 }
 
 .btn-pause{
@@ -14,8 +16,11 @@ button{
 
 .btn-end{
     background-color: crimson;
-}
-.btn-disabled{
+} */
+button:disabled{
     background-color: grey;
     cursor: none;
+}
+button:disabled img{
+    opacity: .25;
 }

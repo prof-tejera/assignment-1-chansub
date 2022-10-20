@@ -37,7 +37,7 @@ const StopWatch = () => {
     }
     const handleEnd = () => {
         setPause(true);
-        setSeconds(10);
+        setSeconds(maxSeconds);
         console.log("Stopwatch end called");
     }
     const handleReset = () => {
@@ -50,8 +50,8 @@ const StopWatch = () => {
     return (
         <>
         <Panel className={"output"}>{doConvert(seconds)}</Panel>
-        <Button className={(pause)?'btn-start':'btn-pause'} text={(pause)?'Start':'Pause'} onClick={handlePauseToggle} disabled={(seconds > 0) || (seconds < 10) ? false:true}/>
-        <Button className='btn-end' text='End' onClick={handleEnd} disabled={(seconds === 0)? true:false}/> 
+        <Button className={(pause)?'btn-start':'btn-pause'} text={(pause)?'Start':'Pause'} onClick={handlePauseToggle} disabled={(seconds === maxSeconds) ? true:false}/>
+        <Button className='btn-end' text='End' onClick={handleEnd} disabled={(seconds === 0)||(seconds === maxSeconds)? true:false}/> 
         <Button className='btn-reset' text='Reset' onClick={handleReset} />
         </>        
     );
