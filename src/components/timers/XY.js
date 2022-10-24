@@ -14,12 +14,10 @@ const XY = () => {
     const [pause, setPause] = useState(true);
 
     useEffect(() => {
-        console.log("useEffect ran");
         const intervalId = setInterval(performCount, 1000);
     
         return () => {
           clearInterval(intervalId);
-          console.log("interval cleared", intervalId);
         };
       });
 
@@ -28,13 +26,11 @@ const XY = () => {
           if (seconds > 0) {
             setSeconds(seconds - 1);
             if (seconds === 1 && rounds > 1) {
-              console.log("set counter now and reset seconds");
               setSeconds(initialSeconds);
               setRounds(rounds - 1);
             }
-            console.log("running now...", seconds);
           } else if (rounds === 1 && seconds === 0) {
-            console.log("END!");
+            console.log("XY timer ends!");
             setRounds(0);
           }
         }
@@ -42,7 +38,7 @@ const XY = () => {
 
     const handlePauseToggle = () => {
         setPause(!pause);
-        console.log("Countdown",(pause)?'unpaused':'paused');
+        console.log("XY",(pause)?'unpaused':'paused');
     }
     const handleEnd = () => {
         setPause(true);
@@ -60,7 +56,7 @@ const XY = () => {
 
     return (
         <>
-        <Panel className={"output"} data-seconds={seconds}>Rounds:{rounds} Time:{doConvert(seconds)}</Panel>
+        <Panel className={"output"} data-seconds={seconds}>Rounds: <span className="numbers">{rounds}</span> Time: <span className="numbers">{doConvert(seconds)}</span></Panel>
         <Button className={(pause)?'btn-start':'btn-pause'} img="start" text={(pause)?'Start':'Pause'} onClick={handlePauseToggle} disabled={(seconds === 0)? true:false}/>
         <Button className='btn-end' text='End' onClick={handleEnd} disabled={(rounds === 0)||(rounds === initialSeconds)? true:false}/> 
         <Button className='btn-reset' text='Reset' onClick={handleReset} />

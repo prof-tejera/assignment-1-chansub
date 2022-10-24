@@ -22,7 +22,10 @@ const Countdown = () => {
         if(!pause){
             if(seconds > 0){
                 setSeconds(seconds - 1);
-                //console.log('running now...', doConvert(seconds));
+            }
+            else if(seconds === 0){
+                setPause(true);
+                console.log("Countdown timer ends!");
             }
         }
     }
@@ -45,7 +48,7 @@ const Countdown = () => {
 
     return (
         <>
-        <Panel className={"output"} data-seconds={seconds}>{doConvert(seconds)}</Panel>
+        <Panel className={"output"} data-seconds={seconds}><span className="numbers">{doConvert(seconds)}</span></Panel>
         <Button className={(pause)?'btn-start':'btn-pause'} img="start" text={(pause)?'Start':'Pause'} onClick={handlePauseToggle} disabled={(seconds === 0)? true:false}/>
         <Button className='btn-end' text='End' onClick={handleEnd} disabled={(seconds === 0)||(seconds === initialSeconds)? true:false}/> 
         <Button className='btn-reset' text='Reset' onClick={handleReset} />

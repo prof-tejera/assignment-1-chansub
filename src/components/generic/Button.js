@@ -15,16 +15,16 @@ const Button = ({ active, text, ...btnProps }) => {
     >
 
     {text === 'Start' &&
-      <img src={playIcon} width="50" alt="Start" title="Start"/>
+      <img src={playIcon} width="30" alt="Start" title="Start"/>
     }
     {text === 'Pause' &&
-      <img src={pauseIcon} width="50" alt="Pause" title="Pause" />
+      <img src={pauseIcon} width="30" alt="Pause" title="Pause" />
     }
     {text === 'End' &&
-      <img src={stopIcon} width="50" alt="End" title="End"/>
+      <img src={stopIcon} width="30" alt="End" title="End"/>
     }
     {text === 'Reset' &&
-      <img src={resetIcon} width="50" alt="Reset" title="Reset"/>
+      <img src={resetIcon} width="30" alt="Reset" title="Reset"/>
     }
 
       

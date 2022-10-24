@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 import DocumentComponent from "../components/documentation/DocumentComponent";
 
-import Loading from "../components/generic/Loading";
+//import Loading from "../components/generic/Loading";
+import Button from "../components/generic/Button";
 
 const Container = styled.div`
   display: flex;
@@ -24,14 +25,14 @@ const Documentation = () => {
       <div>
         <Title>Documentation</Title>
         <DocumentComponent
-          title="Loading spinner "
-          component={<Loading />}
+          title="Timers "
+          component={<Button className='btn-end' text='End'/>}
           propDocs={[
             {
-              prop: "size",
-              description: "Changes the size of the loading spinner",
+              prop: "className, text, disabled",
+              description: "Stop button",
               type: "string",
-              defaultValue: "medium",
+              defaultValue: "Button",
             },
           ]}
         />

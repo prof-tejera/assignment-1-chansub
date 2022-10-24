@@ -12,11 +12,11 @@ const Tabata = () => {
     const [rounds, setRounds] = useState(initialRounds);
     const [seconds, setSeconds] = useState(initialSeconds);
     const [pause, setPause] = useState(true);
+    const [rest, setRest] = useState(false);
 
     useEffect(() => {
-        console.log("useEffect ran");
         const intervalId = setInterval(performCount, 1000);
-    
+  
         return () => {
           clearInterval(intervalId);
         };
@@ -27,25 +27,26 @@ const Tabata = () => {
           if (seconds > 0) {
             setSeconds(seconds - 1);
             if(seconds === 20){
-                console.log("Rest, start counting 10!")
+                console.log("Tabata 20 seconds reached. Now 10 seconds rest...")
                 setSeconds(10);
+                setRest(true);
             }
             if (seconds === 1 && rounds > 1) {
-              console.log("set counter now and reset seconds");
               setSeconds(initialSeconds);
               setRounds(rounds - 1);
+              setRest(false);
             }
-            console.log("running now...", seconds);
           } else if (rounds === 1 && seconds === 0) {
-            console.log("END!");
+            console.log("Tabata timer ends!");
             setRounds(0);
+            setRest(false);
           }
         }
       };
 
     const handlePauseToggle = () => {
         setPause(!pause);
-        console.log("Countdown",(pause)?'unpaused':'paused');
+        console.log("Tabata ",(pause)?'unpaused':'paused');
     }
     const handleEnd = () => {
         setPause(true);
@@ -63,7 +64,7 @@ const Tabata = () => {
 
     return (
         <>
-        <Panel className={"output"} data-seconds={seconds}>Rounds:{rounds} Time:{doConvert(seconds)}</Panel>
+        <Panel className={"output"} data-seconds={seconds}>Rounds: <span className="numbers">{rounds}</span> {(rest) ? 'Rest':'Active'} Time: <span className="numbers">{doConvert(seconds)}</span></Panel>
         <Button className={(pause)?'btn-start':'btn-pause'} img="start" text={(pause)?'Start':'Pause'} onClick={handlePauseToggle} disabled={(seconds === 0)? true:false}/>
         <Button className='btn-end' text='End' onClick={handleEnd} disabled={(rounds === 0)||(rounds === initialSeconds)? true:false}/> 
         <Button className='btn-reset' text='Reset' onClick={handleReset} />
