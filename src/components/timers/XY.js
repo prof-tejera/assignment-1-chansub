@@ -1,6 +1,8 @@
 import { useEffect, useState} from "react";
 import Panel from "../generic/Panel.js";
 import Button from "../generic/Button.js";
+import DisplayTime  from "../generic/DisplayTime.js";
+import DisplayRounds from "../generic/DisplayRounds.js";
 import { doConvert } from "../../utils/helpers";
 
 
@@ -56,9 +58,15 @@ const XY = () => {
 
     return (
         <>
-        <Panel className={"output"} data-seconds={seconds}>Rounds: <span className="numbers">{rounds}</span> Time: <span className="numbers">{doConvert(seconds)}</span></Panel>
+        <Panel className="output">
+            <Panel>
+              <DisplayRounds rounds={rounds}></DisplayRounds>
+              <DisplayTime time={doConvert(seconds)}/>
+            </Panel>
+        </Panel>
+        
         <Button className={(pause)?'btn-start':'btn-pause'} img="start" text={(pause)?'Start':'Pause'} onClick={handlePauseToggle} disabled={(seconds === 0)? true:false}/>
-        <Button className='btn-end' text='End' onClick={handleEnd} disabled={(rounds === 0)||(rounds === initialSeconds)? true:false}/> 
+        <Button className='btn-end' text='End' onClick={handleEnd} disabled={(rounds === 0)||(rounds === initialRounds)? true:false}/> 
         <Button className='btn-reset' text='Reset' onClick={handleReset} />
         </>        
     );

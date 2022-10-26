@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.sc-pGacB{
+  font-size: 45px;
+}
+
 @font-face {
   font-family: 'digital-7regular';
   src: url('fonts/digital-7-webfont.woff2') format('woff2'),
@@ -42,3 +46,17 @@ th {
   font-size: 40px;
 }
 
+nav ul {
+  max-width: 200px;
+}
+nav ul li{
+  margin: 10px 0px 10px 0px;
+  padding: 10px;
+}
+nav ul a{
+  text-decoration:none;;
+  color: black;
+}
+nav li.active{
+   background-color: #d9760b;
+}

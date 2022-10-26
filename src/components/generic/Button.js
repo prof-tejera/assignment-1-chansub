@@ -33,4 +33,6 @@ const Button = ({ active, text, ...btnProps }) => {
   );
 };
 
+Button.defaultProps = { text: 'Define this button' }; 
+
 export default Button;

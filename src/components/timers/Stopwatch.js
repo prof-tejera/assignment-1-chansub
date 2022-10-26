@@ -1,5 +1,6 @@
 import { useEffect, useState} from "react";
 import Panel from "../generic/Panel.js";
+import DisplayTime from "../generic/DisplayTime.js";
 import Button from "../generic/Button.js";
 import { doConvert } from "../../utils/helpers";
 
@@ -52,10 +53,15 @@ const StopWatch = () => {
 
     return (
         <>
-        <Panel className={"output"}><span className="numbers">{doConvert(seconds)}</span></Panel>
-        <Button className={(pause)?'btn-start':'btn-pause'} text={(pause)?'Start':'Pause'} onClick={handlePauseToggle} disabled={(seconds === maxSeconds) ? true:false}/>
-        <Button className='btn-end' text='End' onClick={handleEnd} disabled={(seconds === 0)||(seconds === maxSeconds)? true:false}/> 
-        <Button className='btn-reset' text='Reset' onClick={handleReset} />
+        <Panel className="output">
+            <DisplayTime time={doConvert(seconds)}/>
+        </Panel>
+        <Panel className="buttons">
+            <Button className={(pause)?'btn-start':'btn-pause'} text={(pause)?'Start':'Pause'} onClick={handlePauseToggle} disabled={(seconds === maxSeconds) ? true:false}/>
+            <Button className='btn-end' text='End' onClick={handleEnd} disabled={(seconds === 0)||(seconds === maxSeconds)? true:false}/> 
+            <Button className='btn-reset' text='Reset' onClick={handleReset} />
+        </Panel>
+        
         </>        
     );
 };
