@@ -6,11 +6,10 @@ import stopIcon from '../../images/icons8-stop-96.png';
 
 //Note: icons downloaded from https://icons8.com
 
-const Button = ({ active, text, ...btnProps }) => {
+const Button = ({ text, ...btnProps }) => {
 
   return (
     <button
-      className={active ? ".btn-active" : "btn-disabled"}
       {...btnProps}
     >
 
@@ -26,13 +25,11 @@ const Button = ({ active, text, ...btnProps }) => {
     {text === 'Reset' &&
       <img src={resetIcon} width="30" alt="Reset" title="Reset"/>
     }
-
-      
-      
+          
     </button>
   );
 };
 
-Button.defaultProps = { text: 'Define this button' }; 
+Button.defaultProps = { text: 'Start', className:'active' }; 
 
 export default Button;

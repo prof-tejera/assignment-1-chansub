@@ -6,19 +6,7 @@ button{
     border-radius: 5px;
     border-color: #e7e7e7;
 }
-/* 
-.btn-start{
-    background-color: greenyellow;
-    
-}
 
-.btn-pause{
-    background-color: orange;
-}
-
-.btn-end{
-    background-color: crimson;
-} */
 button:disabled{
     background-color: rgb(202, 200, 200);
     cursor: none;

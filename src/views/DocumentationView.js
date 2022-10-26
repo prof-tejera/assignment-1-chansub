@@ -5,6 +5,7 @@ import DocumentComponent from "../components/documentation/DocumentComponent";
 
 //import Loading from "../components/generic/Loading";
 import Button from "../components/generic/Button";
+import Panel from "../components/generic/Panel";
 
 const Container = styled.div`
   display: flex;
@@ -25,15 +26,44 @@ const Documentation = () => {
       <div>
         <Title>Documentation</Title>
         <DocumentComponent
-          title="Timers "
-          component={<Button className='btn-end' text='End'/>}
+          title="Button "
+          component={<Button className='btn-active' text='Start' />}
           propDocs={[
             {
-              prop: "className, text, disabled",
-              description: "Stop button",
+              prop: "className",
+              description: "If 'btn-disabled', disable button and grey it out.",
               type: "string",
-              defaultValue: "Button",
+              possibleValues: "btn-active | btn-disabled",
+              defaultValue: "btn-active",
             },
+            {
+              prop: "text",
+              description: "Updates the image path based on the text value passed in.",
+              type: "string",
+              possibleValues:"Start | Pause | End | Reset",
+              defaultValue: "",
+            },
+
+          ]}
+        />
+        <DocumentComponent
+          title="Panel "
+          component={<Panel/>}
+          propDocs={[
+            {
+              prop: "className",
+              description: "Gives the wrapping div element a class name",
+              type: "string",
+              possibleValues: "",
+              defaultValue: "",
+            },
+            {
+              prop: "",
+              description: "Places your component and HTML inside a div element",
+              type: "string",
+              possibleValues: "",
+              defaultValue: "",
+            }
           ]}
         />
       </div>
