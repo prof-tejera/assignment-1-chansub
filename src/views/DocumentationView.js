@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 
 import DocumentComponent from "../components/documentation/DocumentComponent";
@@ -23,6 +23,10 @@ const Title = styled.div`
  * You can document your components by using the DocumentComponent component
  */
 const Documentation = () => {
+  useEffect(() => {
+    document.title = 'Susana T. - Assignment 1 - Documentation';
+  },[])
+
   return (
     <Container>
       <div>

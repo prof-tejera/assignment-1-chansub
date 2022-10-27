@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 
 import Stopwatch from "../components/timers/Stopwatch";
@@ -20,6 +20,8 @@ const Timer = styled.div`
   font-size: 1.5rem;
   width: 320px;
   text-align: center;
+  background-color: darkgrey;
+  border-radius: 3%;
 `;
 
 const TimerTitle = styled.div``;
@@ -31,6 +33,10 @@ const TimersView = () => {
        { title: "XY", C: <XY />},
     { title: "Tabata", C: <Tabata />},
   ];
+
+  useEffect(() => {
+    document.title = "Susana T. - Assignment 1 - Timers";  
+  }, []);
 
   return (
     <Timers>
