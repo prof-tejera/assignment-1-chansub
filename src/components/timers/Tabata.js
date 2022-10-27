@@ -42,6 +42,7 @@ const Tabata = () => {
             console.log("Tabata timer ends!");
             setRounds(0);
             setRest(false);
+            renderAction(pause,rest);
           }
         }
       };
@@ -63,6 +64,14 @@ const Tabata = () => {
         console.log("Tabata reset called");
     }
 
+    const renderAction = () => {
+      if(!pause){
+        if(rest) return 'Action: Rest!';
+        else return 'Action: Exercise!';
+      }
+      return ;
+    }
+
 
     return (
         <>
@@ -72,13 +81,12 @@ const Tabata = () => {
               <DisplayTime time={doConvert(seconds)}/>
             </Panel>
             <Panel>
-              {/* //todo: how to only show when the clock is ticking */}
-              Action: {(rest) ? 'Rest!':'Exercise!'}  
+                {renderAction(pause,rest)}
             </Panel>
         </Panel>
 
         <Button className={(pause)?'btn-start':'btn-pause'} text={(pause)?'Start':'Pause'} onClick={handlePauseToggle} disabled={(seconds === 0)? true:false}/>
-        <Button className='btn-end' text='End' onClick={handleEnd} disabled={(rounds === 0)||(rounds === initialRounds)? true:false}/> 
+        <Button className='btn-end' text='End' onClick={handleEnd} disabled={(rounds === 0)||((rounds === initialRounds) && (seconds > 29))? true:false}/> 
         <Button className='btn-reset' text='Reset' onClick={handleReset} />
         </>        
     );
