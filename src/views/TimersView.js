@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 
 import Stopwatch from "../components/timers/Stopwatch";
 import Countdown from "../components/timers/Countdown";
 import XY from "../components/timers/XY";
 import Tabata from "../components/timers/Tabata";
+
 
 const Timers = styled.div`
   display: flex;
@@ -17,17 +18,25 @@ const Timer = styled.div`
   padding: 20px;
   margin: 10px;
   font-size: 1.5rem;
+  width: 320px;
+  text-align: center;
+  background-color: darkgrey;
+  border-radius: 3%;
 `;
 
 const TimerTitle = styled.div``;
 
 const TimersView = () => {
   const timers = [
-    { title: "Stopwatch", C: <Stopwatch /> },
-    { title: "Countdown", C: <Countdown /> },
-    { title: "XY", C: <XY /> },
-    { title: "Tabata", C: <Tabata /> },
+    { title: "Stopwatch", C: <Stopwatch />},
+    { title: "Countdown", C: <Countdown />}, 
+       { title: "XY", C: <XY />},
+    { title: "Tabata", C: <Tabata />},
   ];
+
+  useEffect(() => {
+    document.title = "Susana T. - Assignment 1 - Timers";  
+  }, []);
 
   return (
     <Timers>
@@ -35,6 +44,8 @@ const TimersView = () => {
         <Timer key={`timer-${timer.title}`}>
           <TimerTitle>{timer.title}</TimerTitle>
           {timer.C}
+          {timer.b}
+          {timer.be}
         </Timer>
       ))}
     </Timers>

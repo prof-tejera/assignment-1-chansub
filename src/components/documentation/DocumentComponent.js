@@ -25,7 +25,9 @@ const RenderComponent = styled.div`
   align-items: center;
 `;
 
-const Documentation = styled.table``;
+const Documentation = styled.table`
+  width: 100%;
+`;
 
 const DocumentComponent = ({ title, component, propDocs }) => {
   return (
@@ -39,6 +41,7 @@ const DocumentComponent = ({ title, component, propDocs }) => {
               <th>Prop</th>
               <th>Description</th>
               <th>Type</th>
+              <th>Possible Values</th>
               <th>Default value</th>
             </tr>
           </thead>
@@ -49,6 +52,7 @@ const DocumentComponent = ({ title, component, propDocs }) => {
                   <td>{doc.prop}</td>
                   <td>{doc.description}</td>
                   <td>{doc.type}</td>
+                  <td><code>{doc.possibleValues}</code></td>
                   <td>
                     <code>{doc.defaultValue}</code>
                   </td>
