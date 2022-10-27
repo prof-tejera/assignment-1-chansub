@@ -30,6 +30,6 @@ const Button = ({ text, ...btnProps }) => {
   );
 };
 
-Button.defaultProps = { text: 'Start', className:'active' }; 
+Button.defaultProps = { text: 'Start', className:'btn-active' }; 
 
 export default Button;

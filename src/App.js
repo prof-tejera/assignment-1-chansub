@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from "react-router-dom";
+import { useLocation, BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 
 import DocumentationView from "./views/DocumentationView";

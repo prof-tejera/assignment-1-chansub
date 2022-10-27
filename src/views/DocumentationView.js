@@ -6,6 +6,8 @@ import DocumentComponent from "../components/documentation/DocumentComponent";
 //import Loading from "../components/generic/Loading";
 import Button from "../components/generic/Button";
 import Panel from "../components/generic/Panel";
+import DisplayTime from "../components/generic/DisplayTime";
+import DisplayRounds from "../components/generic/DisplayRounds";
 
 const Container = styled.div`
   display: flex;
@@ -31,7 +33,7 @@ const Documentation = () => {
           propDocs={[
             {
               prop: "className",
-              description: "If 'btn-disabled', disable button and grey it out.",
+              description: "If 'btn-disabled' grey it out remove pointer cursor.",
               type: "string",
               possibleValues: "btn-active | btn-disabled",
               defaultValue: "btn-active",
@@ -41,14 +43,13 @@ const Documentation = () => {
               description: "Updates the image path based on the text value passed in.",
               type: "string",
               possibleValues:"Start | Pause | End | Reset",
-              defaultValue: "",
-            },
-
+              defaultValue: "Start",
+            }
           ]}
         />
         <DocumentComponent
           title="Panel "
-          component={<Panel/>}
+          component={<Panel className="myDivClass"><p>content here</p></Panel>}
           propDocs={[
             {
               prop: "className",
@@ -59,7 +60,35 @@ const Documentation = () => {
             },
             {
               prop: "",
-              description: "Places your component and HTML inside a div element",
+              description: "Places your JSX and components inside a div element",
+              type: "string",
+              possibleValues: "",
+              defaultValue: "",
+            }
+          ]}
+        />
+
+        <DocumentComponent
+          title="DisplayTime"
+          component={<DisplayTime time="09:10"/>}
+          propDocs={[
+            {
+              prop: "time",
+              description: "Outputs `Time: xx:xx`",
+              type: "string",
+              possibleValues: "",
+              defaultValue: "",
+            }
+          ]}
+        />
+
+        <DocumentComponent
+          title="DisplayRounds"
+          component={<DisplayRounds rounds="3"/>}
+          propDocs={[
+            {
+              prop: "rounds",
+              description: "Outputs `Ronds: x`",
               type: "string",
               possibleValues: "",
               defaultValue: "",

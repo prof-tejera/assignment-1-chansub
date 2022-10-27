@@ -25,7 +25,9 @@ const RenderComponent = styled.div`
   align-items: center;
 `;
 
-const Documentation = styled.table``;
+const Documentation = styled.table`
+  width: 100%;
+`;
 
 const DocumentComponent = ({ title, component, propDocs }) => {
   return (
