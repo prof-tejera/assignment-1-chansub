@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/assignment-1-chansub/static/css/main.dd609a00.css",
+    "main.js": "/assignment-1-chansub/static/js/main.e3d74dcc.js",
+    "static/media/digital-7-webfont.woff": "/assignment-1-chansub/static/media/digital-7-webfont.a39e8284564685c1ec0e.woff",
+    "static/media/digital-7-webfont.woff2": "/assignment-1-chansub/static/media/digital-7-webfont.e5cb4cd5732d3f0b7564.woff2",
+    "index.html": "/assignment-1-chansub/index.html",
+    "main.dd609a00.css.map": "/assignment-1-chansub/static/css/main.dd609a00.css.map",
+    "main.e3d74dcc.js.map": "/assignment-1-chansub/static/js/main.e3d74dcc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dd609a00.css",
+    "static/js/main.e3d74dcc.js"
+  ]
+}
